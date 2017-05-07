@@ -12,7 +12,7 @@ sudo docker run -itd \
                 -p 8088:8088 \
                 --name hadoop-master \
                 --hostname hadoop-master \
-                sciatta/hadoop:2.7.2.RELEASE &> /dev/null
+                sciatta/hadoop:release_2.7.2.RELEASE &> /dev/null
 
 
 # start hadoop slave container
@@ -25,7 +25,7 @@ do
 	                --net=hadoop \
 	                --name hadoop-slave$i \
 	                --hostname hadoop-slave$i \
-	                sciatta/hadoop:2.7.2.RELEASE &> /dev/null
+	                sciatta/hadoop:release_2.7.2.RELEASE &> /dev/null
 	i=$(( $i + 1 ))
 done 
 

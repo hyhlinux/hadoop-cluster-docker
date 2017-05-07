@@ -26,7 +26,7 @@ Hadoop的master和slave分别运行在不同的Docker容器中，其中hadoop-master容器中运行Na
 运行Docker容器
 
 	cd hadoop-cluster-docker
-	./start-container.sh
+	sh ./start-container.sh
 
 运行结果
 
@@ -40,8 +40,8 @@ Hadoop的master和slave分别运行在不同的Docker容器中，其中hadoop-master容器中运行Na
 
 启动Hadoop，运行wordcount
 
-	./start-hadoop.sh
-	./run-wordcount.sh
+	sh ./start-hadoop.sh
+	sh ./run-wordcount.sh
 
 运行结果
 
@@ -69,13 +69,13 @@ Hadoop网页管理地址
 
 重新构建Docker镜像
 
-	./resize-cluster.sh $CONTAINERNO
+	sh ./resize-cluster.sh $CONTAINERNO
 
 启动Docker容器
 
-	./start-container.sh $CONTAINERNO
+	sh ./start-container.sh $CONTAINERNO
 
 启动Hadoop，运行wordcount
 
-	./start-hadoop.sh
-	./run-wordcount.sh
+	sh ./start-hadoop.sh
+	sh ./run-wordcount.sh
