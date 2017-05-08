@@ -23,6 +23,6 @@ echo ""
 echo -e "build docker hadoop image\n"
 
 # rebuild sciatta/hadoop image
-sudo docker build -t sciatta/hadoop:release_2.7.2.RELEASE .
+sudo docker build -t sciatta/hadoop:2.7.2.RELEASE .
 
 echo ""

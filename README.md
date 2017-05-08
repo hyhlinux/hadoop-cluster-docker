@@ -1,49 +1,49 @@
-# µ¥»ú´î½¨Hadoop¼¯Èº
-HadoopµÄmasterºÍslave·Ö±ğÔËĞĞÔÚ²»Í¬µÄDockerÈİÆ÷ÖĞ£¬ÆäÖĞhadoop-masterÈİÆ÷ÖĞÔËĞĞNameNodeºÍResourceManager£¬hadoop-slaveÈİÆ÷ÖĞÔËĞĞDataNodeºÍNodeManager¡£NameNodeºÍDataNodeÊÇHadoop·Ö²¼Ê½ÎÄ¼şÏµÍ³HDFSµÄ×é¼ş£¬¸ºÔğ´¢´æÊäÈëÒÔ¼°Êä³öÊı¾İ£¬¶øResourceManagerºÍNodeManagerÊÇHadoop¼¯Èº×ÊÔ´¹ÜÀíÏµÍ³YARNµÄ×é¼ş£¬¸ºÔğCPUºÍÄÚ´æ×ÊÔ´µÄµ÷¶È¡£
+# å•æœºæ­å»ºHadoopé›†ç¾¤
+Hadoopçš„masterå’Œslaveåˆ†åˆ«è¿è¡Œåœ¨ä¸åŒçš„Dockerå®¹å™¨ä¸­ï¼Œå…¶ä¸­hadoop-masterå®¹å™¨ä¸­è¿è¡ŒNameNodeå’ŒResourceManagerï¼Œhadoop-slaveå®¹å™¨ä¸­è¿è¡ŒDataNodeå’ŒNodeManagerã€‚NameNodeå’ŒDataNodeæ˜¯Hadoopåˆ†å¸ƒå¼æ–‡ä»¶ç³»ç»ŸHDFSçš„ç»„ä»¶ï¼Œè´Ÿè´£å‚¨å­˜è¾“å…¥ä»¥åŠè¾“å‡ºæ•°æ®ï¼Œè€ŒResourceManagerå’ŒNodeManageræ˜¯Hadoopé›†ç¾¤èµ„æºç®¡ç†ç³»ç»ŸYARNçš„ç»„ä»¶ï¼Œè´Ÿè´£CPUå’Œå†…å­˜èµ„æºçš„è°ƒåº¦ã€‚
 
-# ¹¹½¨¾µÏñ
+# æ„å»ºé•œåƒ
 
-ÏÂÔØdocker¾µÏñ
+ä¸‹è½½dockeré•œåƒ
 
 	sudo docker pull sciatta/hadoop:2.7.2.RELEASE
 
-»òÕßÍ¨¹ıDockerfile¹¹½¨
+æˆ–è€…é€šè¿‡Dockerfileæ„å»º
 
 	git clone https://github.com/sciatta/hadoop-cluster-docker.git
 	cd hadoop-cluster-docker
 	sudo docker build -t sciatta/hadoop:2.7.2.RELEASE .
 
-# ÔËĞĞ
+# è¿è¡Œ
 
-ÏÂÔØGitHub²Ö¿â
+ä¸‹è½½GitHubä»“åº“
 
 	git clone https://github.com/sciatta/hadoop-cluster-docker.git
 
-´´½¨HadoopÍøÂç
+åˆ›å»ºHadoopç½‘ç»œ
 
 	sudo docker network create --driver=bridge hadoop
 
-ÔËĞĞDockerÈİÆ÷
+è¿è¡ŒDockerå®¹å™¨
 
 	cd hadoop-cluster-docker
 	sh ./start-container.sh
 
-ÔËĞĞ½á¹û
+è¿è¡Œç»“æœ
 
 	start hadoop-master container...
 	start hadoop-slave1 container...
 	start hadoop-slave2 container...
 	root@hadoop-master:~#
 
-* Æô¶¯ÁË3¸öÈİÆ÷£¬1¸ömaster£¬2¸öslave
-* ÔËĞĞºó¾Í½øÈëÁËhadoop-masterÈİÆ÷µÄ/rootÄ¿Â¼
+* å¯åŠ¨äº†3ä¸ªå®¹å™¨ï¼Œ1ä¸ªmasterï¼Œ2ä¸ªslave
+* è¿è¡Œåå°±è¿›å…¥äº†hadoop-masterå®¹å™¨çš„/rootç›®å½•
 
-Æô¶¯Hadoop£¬ÔËĞĞwordcount
+å¯åŠ¨Hadoopï¼Œè¿è¡Œwordcount
 
 	sh ./start-hadoop.sh
 	sh ./run-wordcount.sh
 
-ÔËĞĞ½á¹û
+è¿è¡Œç»“æœ
 
 	input file1.txt:
 	Hello Hadoop
@@ -54,28 +54,28 @@ HadoopµÄmasterºÍslave·Ö±ğÔËĞĞÔÚ²»Í¬µÄDockerÈİÆ÷ÖĞ£¬ÆäÖĞhadoop-masterÈİÆ÷ÖĞÔËĞĞNa
 	Hadoop	1
 	Hello	2
 
-HadoopÍøÒ³¹ÜÀíµØÖ·
+Hadoopç½‘é¡µç®¡ç†åœ°å€
 
 	NameNode: http://192.168.0.29:50070/
 	ResourceManager: http://192.168.0.29:8088/
 
-* 192.168.0.29ÎªÔËĞĞÈİÆ÷µÄÖ÷»úIP¡£
+* 192.168.0.29ä¸ºè¿è¡Œå®¹å™¨çš„ä¸»æœºIPã€‚
 
-# N½ÚµãHadoop¼¯Èº´î½¨²½Öè
+# NèŠ‚ç‚¹Hadoopé›†ç¾¤æ­å»ºæ­¥éª¤
 
-Ö¸¶¨ÈİÆ÷ÊıÁ¿CONTAINERNO£¬¿ÉÒÔÈÎÒâÖ¸¶¨CONTAINERNO£¨CONTAINERNO>1£©
+æŒ‡å®šå®¹å™¨æ•°é‡CONTAINERNOï¼Œå¯ä»¥ä»»æ„æŒ‡å®šCONTAINERNOï¼ˆCONTAINERNO>1ï¼‰
 
 	export CONTAINERNO=5
 
-ÖØĞÂ¹¹½¨Docker¾µÏñ
+é‡æ–°æ„å»ºDockeré•œåƒ
 
 	sh ./resize-cluster.sh $CONTAINERNO
 
-Æô¶¯DockerÈİÆ÷
+å¯åŠ¨Dockerå®¹å™¨
 
 	sh ./start-container.sh $CONTAINERNO
 
-Æô¶¯Hadoop£¬ÔËĞĞwordcount
+å¯åŠ¨Hadoopï¼Œè¿è¡Œwordcount
 
 	sh ./start-hadoop.sh
 	sh ./run-wordcount.sh
