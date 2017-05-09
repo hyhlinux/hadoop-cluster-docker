@@ -1,6 +1,8 @@
 # 单机搭建Hadoop集群
 Hadoop的master和slave分别运行在不同的Docker容器中，其中hadoop-master容器中运行NameNode和ResourceManager，hadoop-slave容器中运行DataNode和NodeManager。NameNode和DataNode是Hadoop分布式文件系统HDFS的组件，负责储存输入以及输出数据，而ResourceManager和NodeManager是Hadoop集群资源管理系统YARN的组件，负责CPU和内存资源的调度。
 
+![hadoop-cluster-docker][hcd]
+
 # 构建镜像
 
 下载docker镜像
@@ -57,7 +59,12 @@ Hadoop的master和slave分别运行在不同的Docker容器中，其中hadoop-ma
 Hadoop网页管理地址
 
 	NameNode: http://192.168.0.29:50070/
+
+![NameNode][nn]
+	
 	ResourceManager: http://192.168.0.29:8088/
+	
+![ResourceManager][rm]
 
 * 192.168.0.29为运行容器的主机IP。
 
@@ -78,4 +85,8 @@ Hadoop网页管理地址
 启动Hadoop，运行wordcount
 
 	sh ./start-hadoop.sh
-	sh ./run-wordcount.sh
+	sh ./run-wordcount.sh	
+
+[hcd]: https://raw.githubusercontent.com/sciatta/hadoop-cluster-docker/develop/doc/hadoop-cluster-docker.png  "hadoop-cluster-docker"
+[nn]: https://raw.githubusercontent.com/sciatta/hadoop-cluster-docker/develop/doc/NameNode.png  "NameNode"
+[rm]: https://raw.githubusercontent.com/sciatta/hadoop-cluster-docker/develop/doc/ResourceManager.png  "ResourceManager"
